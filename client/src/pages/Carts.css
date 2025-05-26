@@ -252,9 +252,7 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .carts-container {
-        padding: 1rem; /* 16px */
-    }
+    
 
     .carts-container h1 {
         font-size: 1.75rem;
