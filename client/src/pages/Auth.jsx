@@ -17,7 +17,7 @@ const Auth = () => {
     e.preventDefault();
     try {
       if (isSignup) {
-        const response = await axios.post("http://localhost:5000/api/auth/register", {
+        const response = await axios.post("https://mithun-electricals.onrender.com/api/auth/register", {
           username,
           email,
           password,
@@ -30,8 +30,8 @@ const Auth = () => {
         setError("");
       } else {
         const endpoint = isAdminLogin
-          ? "http://localhost:5000/api/auth/admin-login"
-          : "http://localhost:5000/api/auth/login";
+          ? "https://mithun-electricals.onrender.com/api/auth/admin-login"
+          : "https://mithun-electricals.onrender.com/api/auth/login";
         const res = await axios.post(endpoint, { email, password });
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user", JSON.stringify(res.data.user));

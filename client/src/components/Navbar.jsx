@@ -3,8 +3,6 @@ import { useState, useEffect, useRef } from "react";
 import { 
   FaShoppingCart, 
   FaSearch, 
-  FaHeart, 
-  FaBell, 
   FaSignOutAlt,
   FaUserCog,
   FaCog,
@@ -76,7 +74,11 @@ const Navbar = () => {
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
   }, [isProfileOpen]);
 
   useEffect(() => {
@@ -101,22 +103,45 @@ const Navbar = () => {
                 "Mithun Electricals"
               )}
             </div>
+            
+            {/* Desktop Navigation Links */}
+            {!isMobile && (
+              <div className="nav-links">
+                <ul>
+                  {[
+                    { to: "/", text: "Home" },
+                    { to: "/products", text: "Products" },
+                    { to: "/contact", text: "Contact Us" },
+                    ...(user?.role === "admin" ? [{ to: "/admin/dashboard", text: "Admin" }] : []),
+                  ].map((item, index) => (
+                    <li key={index}>
+                      <Link to={item.to}>
+                        {item.text}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
-          <div className="nav-center">
-            <form className="search-container" onSubmit={handleSearch} ref={searchRef}>
-              <input
-                type="text"
-                placeholder="Search products..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="search-input"
-              />
-              <button type="submit" className="search-btn">
-                <FaSearch />
-              </button>
-            </form>
-          </div>
+          {/* Desktop Search Bar */}
+          {!isMobile && (
+            <div className="nav-center">
+              <form className="search-container" onSubmit={handleSearch} ref={searchRef}>
+                <input
+                  type="text"
+                  placeholder="Search products..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="search-input"
+                />
+                <button type="submit" className="search-btn">
+                  <FaSearch />
+                </button>
+              </form>
+            </div>
+          )}
 
           <div className="nav-right">
             <div className="nav-icons">
@@ -168,35 +193,39 @@ const Navbar = () => {
             </div>
           </div>
 
-          <div className="hamburger" onClick={toggleMenu}>
-            <div className={`bar ${isMenuOpen ? "change" : ""}`}></div>
-            <div className={`bar ${isMenuOpen ? "change" : ""}`}></div>
-            <div className={`bar ${isMenuOpen ? "change" : ""}`}></div>
-          </div>
+          {/* Mobile Hamburger Menu */}
+          {isMobile && (
+            <div className="hamburger" onClick={toggleMenu}>
+              <div className={`bar ${isMenuOpen ? "change" : ""}`}></div>
+              <div className={`bar ${isMenuOpen ? "change" : ""}`}></div>
+              <div className={`bar ${isMenuOpen ? "change" : ""}`}></div>
+            </div>
+          )}
         </div>
       </nav>
 
       {/* Mobile Menu Overlay */}
-      <div className={`mobile-menu-overlay ${isMenuOpen ? "active" : ""}`}>
-        <div className="mobile-menu-content">
-          <FaTimes className="mobile-menu-close" onClick={closeMenu} />
-          <ul className="mobile-menu-links">
-            {[
-              { to: "/", text: "Home" },
-              { to: "/products", text: "Products" },
-              { to: "/contact", text: "Contact Us" },
-              ...(user?.role === "admin" ? [{ to: "/admin/dashboard", text: "Admin" }] : []),
-            ].map((item, index) => (
-              <li key={index}>
-                <Link to={item.to} onClick={closeMenu}>
-                  {item.text}
-                </Link>
-              </li>
-            ))}
-          </ul>
-          
+      {isMobile && (
+        <div className={`mobile-menu-overlay ${isMenuOpen ? "active" : ""}`}>
+          <div className="mobile-menu-content">
+            <FaTimes className="mobile-menu-close" onClick={closeMenu} />
+            <ul className="mobile-menu-links">
+              {[
+                { to: "/", text: "Home" },
+                { to: "/products", text: "Products" },
+                { to: "/contact", text: "Contact Us" },
+                ...(user?.role === "admin" ? [{ to: "/admin/dashboard", text: "Admin" }] : []),
+              ].map((item, index) => (
+                <li key={index}>
+                  <Link to={item.to} onClick={closeMenu}>
+                    {item.text}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

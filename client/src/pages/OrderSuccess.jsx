@@ -30,7 +30,7 @@ const OrderSuccess = () => {
         } else {
           // Otherwise fetch the latest order
           const response = await axios.get(
-            'http://localhost:5000/api/orders/history',
+            'https://mithun-electricals.onrender.com/api/orders/history',
             { headers: { 'x-access-token': token } }
           );
           
@@ -46,7 +46,7 @@ const OrderSuccess = () => {
 
         // You can fetch order details here if needed
         // const detailsResponse = await axios.get(
-        //   `http://localhost:5000/api/orders/${id}`,
+        //   `https://mithun-electricals.onrender.com/api/orders/${id}`,
         //   { headers: { 'x-access-token': token } }
         // );
         // setOrderDetails(detailsResponse.data);

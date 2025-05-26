@@ -48,7 +48,7 @@ const Contact = () => {
     
     setLoading(true);
     try {
-      await axios.post("http://localhost:5000/api/contact", formData);
+      await axios.post("https://mithun-electricals.onrender.com/api/contact", formData);
       setSuccess("Thank you! Your message has been sent successfully.");
       setFormData({ name: "", email: "", message: "", phone: "" });
       setError(null);

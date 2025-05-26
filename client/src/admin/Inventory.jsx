@@ -43,7 +43,7 @@ const Inventory = () => {
     try {
       setLoading(true);
       setError(null);
-      const res = await axios.get("http://localhost:5000/api/inventory");
+      const res = await axios.get("https://mithun-electricals.onrender.com/api/inventory");
       setProducts(res.data);
     // eslint-disable-next-line no-unused-vars
     } catch (err) {
@@ -80,11 +80,11 @@ const Inventory = () => {
       
       if (editingProduct) {
         await axios.put(
-          `http://localhost:5000/api/inventory/update/${editingProduct._id}`,
+          `https://mithun-electricals.onrender.com/api/inventory/update/${editingProduct._id}`,
           newProduct
         );
       } else {
-        await axios.post("http://localhost:5000/api/inventory/add", newProduct);
+        await axios.post("https://mithun-electricals.onrender.com/api/inventory/add", newProduct);
       }
       
       await fetchProducts();
@@ -113,7 +113,7 @@ const Inventory = () => {
       try {
         setLoading(true);
         setError(null);
-        await axios.delete(`http://localhost:5000/api/inventory/delete/${productToDelete._id}`);
+        await axios.delete(`https://mithun-electricals.onrender.com/api/inventory/delete/${productToDelete._id}`);
         await fetchProducts();
       // eslint-disable-next-line no-unused-vars
       } catch (err) {
@@ -147,7 +147,7 @@ const Inventory = () => {
       formData.append('image', file);
       
       try {
-        const response = await axios.post('http://localhost:5000/api/upload', formData, {
+        const response = await axios.post('https://mithun-electricals.onrender.com/api/upload', formData, {
           headers: {
             'Content-Type': 'multipart/form-data'
           }

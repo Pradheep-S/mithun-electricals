@@ -124,13 +124,13 @@
   background: transparent;
   border: none;
   padding: 10px 16px;
-  color: white;
   font-size: 0.95em;
   width: 100%;
-}
+  
+} 
 
 .search-input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(0, 0, 0, 0.6);
 }
 
 .search-input:focus {
@@ -238,6 +238,7 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .profile-icon-img {
@@ -257,18 +258,20 @@
 
 /* Profile Dropdown */
 .profile-dropdown {
-  position: absolute;
-  top: calc(100% + 10px);
-  right: 0;
+  position: fixed;
+  top: 60px;
+  right: 10px;
   background: rgba(26, 32, 44, 0.98);
   backdrop-filter: blur(12px);
   border-radius: 12px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
-  padding: 20px;
-  min-width: 240px;
+  padding: 16px;
+  min-width: 220px;
+  max-width: 90vw;
   z-index: 1001;
   animation: fadeIn 0.2s ease-in-out;
   border: 1px solid rgba(255, 255, 255, 0.15);
+  transform-origin: top right;
 }
 
 .profile-details {
@@ -290,6 +293,7 @@
   font-size: 0.85em;
   color: rgba(255, 255, 255, 0.7);
   word-break: break-all;
+  padding: 0 10px;
 }
 
 .profile-actions {
@@ -312,6 +316,7 @@
   transition: all 0.2s ease;
   font-size: 0.9em;
   font-weight: 500;
+  touch-action: manipulation;
 }
 
 .profile-link:hover {
@@ -335,6 +340,7 @@
   cursor: pointer;
   transition: all 0.2s ease;
   width: 100%;
+  touch-action: manipulation;
 }
 
 .logout-btn:hover {
@@ -433,12 +439,6 @@
   transform: scale(1.05);
 }
 
-.mobile-menu-search {
-  margin-top: 30px;
-  width: 90%;
-  max-width: 500px;
-}
-
 .mobile-menu-close {
   position: absolute;
   top: 30px;
@@ -515,26 +515,32 @@
   }
 
   .profile-dropdown {
-    width: 200px;
-    right: -70px;
+    position: fixed;
+    top: 60px;
+    right: 10px;
+    width: 80vw;
+    max-width: 280px;
+    min-width: 200px;
+    transform-origin: top right;
+    transform: scale(0.95);
+    padding: 14px;
   }
-  
-  .profile-dropdown::before {
-    content: "";
-    position: absolute;
-    top: -10px;
-    right: 78px;
-    border-width: 0 10px 10px 10px;
-    border-style: solid;
-    border-color: transparent transparent rgba(26, 32, 44, 0.95) transparent;
+
+  .profile-details h3 {
+    font-size: 1em;
   }
-  
-  .nav-icons {
-    gap: 12px;
+
+  .user-email {
+    font-size: 0.8em;
   }
-  
-  .icon-link {
-    font-size: 0.9em;
+
+  .profile-link, .logout-btn {
+    font-size: 0.85em;
+    padding: 8px 12px;
+  }
+
+  .profile-action-icon {
+    font-size: 1em;
   }
 }
 
@@ -555,6 +561,21 @@
     padding: 6px 12px;
     font-size: 0.85em;
   }
+
+  .profile-dropdown {
+    width: 90vw;
+    max-width: 240px;
+    top: 55px;
+    right: 5px;
+  }
+
+  .profile-details h3 {
+    font-size: 0.95em;
+  }
+
+  .user-email {
+    font-size: 0.75em;
+  }
 }
 
 /* Animations */
@@ -572,10 +593,10 @@
 @keyframes fadeIn {
   from {
     opacity: 0;
-    transform: translateY(-10px);
+    transform: translateY(-10px) scale(0.95);
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
   }
 }

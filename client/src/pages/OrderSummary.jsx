@@ -78,7 +78,7 @@ const OrderSummary = ({ onBack }) => {
 
         // Create order in database
         const response = await axios.post(
-          'http://localhost:5000/api/orders', 
+          'https://mithun-electricals.onrender.com/api/orders', 
           orderData, 
           { headers: { "x-access-token": token } }
         );
@@ -134,7 +134,7 @@ const OrderSummary = ({ onBack }) => {
             // On successful payment, save order
             try {
               const orderResponse = await axios.post(
-                'http://localhost:5000/api/orders', 
+                'https://mithun-electricals.onrender.com/api/orders', 
                 orderData, 
                 { headers: { "x-access-token": token } }
               );

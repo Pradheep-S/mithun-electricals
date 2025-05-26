@@ -250,9 +250,7 @@ h1 {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .products-container {
-        padding: 1rem; /* 16px */
-    }
+    
 
     h1 {
         font-size: 1.75rem;
@@ -285,13 +283,15 @@ h1 {
     }
 
     .product-actions {
-        flex-direction: column;
-        gap: 0.5rem; /* 8px */
-    }
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
 
     .add-to-cart-btn,
     .buy-now-btn {
-        width: 100%;
+        width: auto;
+        flex: 1;
     }
 
     .product-notification {

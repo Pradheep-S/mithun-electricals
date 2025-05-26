@@ -190,7 +190,7 @@ app.use('/uploads', express.static('uploads'));
 // Image upload endpoint
 app.post('/api/upload', upload.single('image'), (req, res) => {
   try {
-    const imageUrl = `http://localhost:5000/uploads/${req.file.filename}`;
+    const imageUrl = `https://mithun-electricals.onrender.com/uploads/${req.file.filename}`;
     res.json({ imageUrl });
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -583,7 +583,7 @@ app.get("/api/admin/activities", verifyToken, isAdmin, async (req, res) => {
 app.post("/api/admin/inventory/add", verifyToken, isAdmin, upload.single('image'), async (req, res) => {
   try {
     const { name, description, quantity, price, supplier } = req.body;
-    const imageUrl = req.file ? `http://localhost:5000/uploads/${req.file.filename}` : '';
+    const imageUrl = req.file ? `https://mithun-electricals.onrender.com/uploads/${req.file.filename}` : '';
 
     const newProduct = new Product({
       name,
@@ -605,7 +605,7 @@ app.put("/api/admin/inventory/update/:id", verifyToken, isAdmin, upload.single('
   try {
     const updateData = { ...req.body };
     if (req.file) {
-      updateData.image = `http://localhost:5000/uploads/${req.file.filename}`;
+      updateData.image = `https://mithun-electricals.onrender.com/uploads/${req.file.filename}`;
     }
     
     const updatedProduct = await Product.findByIdAndUpdate(
