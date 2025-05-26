@@ -13,7 +13,6 @@ import Navbara from "./Navbara";
 import "./Dashboard.css";
 
 const Dashboard = () => {
-  // Remove axios import and backend connection logic
   const [metrics] = useState({
     totalProducts: 30,
     lowStockProducts: 12,
@@ -54,11 +53,9 @@ const Dashboard = () => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Simulate loading delay
     const timer = setTimeout(() => {
       setLoading(false);
     }, 1000);
-
     return () => clearTimeout(timer);
   }, []);
 
@@ -92,7 +89,7 @@ const Dashboard = () => {
       <div className="dashboard-container">
         <div className="dashboard-header">
           <h2>
-            <Activity className="inline-icon" size={32} />
+            <Activity className="inline-icon" size={28} />
             Admin Dashboard
           </h2>
           <div className="date-time">
@@ -117,7 +114,7 @@ const Dashboard = () => {
         <div className="dashboard-metrics">
           <div className="metric-card">
             <div className="metric-icon products">
-              <Package size={24} />
+              <Package size={20} />
             </div>
             <div className="metric-content">
               <h3>Total Products</h3>
@@ -128,7 +125,7 @@ const Dashboard = () => {
 
           <div className="metric-card">
             <div className="metric-icon alerts">
-              <AlertCircle size={24} />
+              <AlertCircle size={20} />
             </div>
             <div className="metric-content">
               <h3>Low Stock</h3>
@@ -139,7 +136,7 @@ const Dashboard = () => {
 
           <div className="metric-card">
             <div className="metric-icon orders">
-              <ShoppingBag size={24} />
+              <ShoppingBag size={20} />
             </div>
             <div className="metric-content">
               <h3>Total Orders</h3>
@@ -150,7 +147,7 @@ const Dashboard = () => {
 
           <div className="metric-card">
             <div className="metric-icon revenue">
-              <DollarSign size={24} />
+              <DollarSign size={20} />
             </div>
             <div className="metric-content">
               <h3>Total Revenue</h3>
@@ -164,7 +161,7 @@ const Dashboard = () => {
           <div className="dashboard-card">
             <div className="card-header">
               <h3>Recent Orders</h3>
-              <Clock size={20} />
+              <Clock size={18} />
             </div>
             <div className="activities-list">
               {recentActivities.map((activity) => (
@@ -188,7 +185,7 @@ const Dashboard = () => {
           <div className="dashboard-card">
             <div className="card-header">
               <h3>Active Users</h3>
-              <Users size={20} />
+              <Users size={18} />
             </div>
             <div className="user-stats">
               <div className="stat-value">{metrics.activeUsers}</div>
