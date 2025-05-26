@@ -264,9 +264,7 @@
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .checkout-container {
-        
-    }
+   
 
     .checkout-progress {
         flex-wrap: wrap;

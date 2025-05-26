@@ -236,9 +236,7 @@ button {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .profile-container {
-        
-    }
+   
 
     .profile-card {
         padding: 1rem; /* 16px */
