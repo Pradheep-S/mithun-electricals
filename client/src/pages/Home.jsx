@@ -81,7 +81,7 @@ const Home = () => {
         <section className="hero">
           <div className="video-background">
             <video autoPlay muted loop className="hero-video">
-              <source src="/src/assets/bgvideo.mp4" type="video/mp4" />
+              <source src="public/assets/bgvideo.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
             <div className="video-overlay"></div>
