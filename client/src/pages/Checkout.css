@@ -265,7 +265,7 @@
 /* Responsive Design */
 @media (max-width: 768px) {
     .checkout-container {
-        padding: 1rem; /* 16px */
+        
     }
 
     .checkout-progress {
